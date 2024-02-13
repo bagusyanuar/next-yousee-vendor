@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps { text: string, className?: string }
+interface IProps { text: string, icon?: string, className?: string }
 const SidebarItem = ({
     text,
+    icon = 'bx-circle',
     className = ''
 }: IProps) => {
     return (
         <Wrapper className={className}>
-            <i className='bx bxs-dashboard'></i>
+            <i className={`bx ${icon}`}></i>
             <span>{text}</span>
         </Wrapper>
     )
@@ -26,7 +27,7 @@ const Wrapper = styled.a`
     transition: all ease-in-out 200ms;
     border-radius: 5px;
     padding: 0.75rem 0.5rem;
-    font-size: 0.8em;
+    font-size: 1em;
 
     &:hover {
         background-color: var(--primary-color);
@@ -34,10 +35,10 @@ const Wrapper = styled.a`
     }
 
     i {
-        margin-right: 0.5rem;
+        margin-right: 0.75rem;
     }
 
     span {
-        font-weight: 500;
+        font-weight: 400;
     }
 `

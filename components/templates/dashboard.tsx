@@ -1,4 +1,5 @@
 import React from 'react'
+import { SidebarMenu } from '@/components/molecules/sidebar'
 import Sidebar, { SidebarBrand, SidebarItem } from '@/components/atoms/sidebar'
 
 function DashboardTemplate() {
@@ -6,7 +7,7 @@ function DashboardTemplate() {
         <main>
             <Sidebar>
                 <SidebarBrand image='/assets/images/brand.png' className='mb-10' />
-                <SidebarItem text='Dashboard'/>
+                <SidebarMenu />
             </Sidebar>
         </main>
     )

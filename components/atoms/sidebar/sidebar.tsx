@@ -15,7 +15,7 @@ export default Sidebar
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.25rem;
     width: 270px;
     height: 100vh;
     position: fixed;
