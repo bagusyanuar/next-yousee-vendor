@@ -1,35 +1,39 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/internal/redux/store'
-
-type loginState = {
-    Username: string
-    Password: string
-}
-
-const initialState: loginState = {
-    Username: '',
-    Password: ''
-}
+import { initialState } from './state'
+import { submit } from './action'
 
 const slice = createSlice({
     name: 'login',
     initialState,
     reducers: {
-        reset: () => initialState,
-        setUsername: (state, action: PayloadAction<string>) => {
+        Reset: () => initialState,
+        SetUsername: (state, action: PayloadAction<string>) => {
             state.Username = action.payload
         },
-        setPassword: (state, action: PayloadAction<string>) => {
+        SetPassword: (state, action: PayloadAction<string>) => {
             state.Password = action.payload
         },
-    }
+        SetLoadingLogin: (state, action: PayloadAction<boolean>) => {
+            state.LoadingLogin = action.payload
+        },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(submit.pending, (state, { payload }) => {
+            state.LoadingLogin = true
+        })
+        builder.addCase(submit.fulfilled, (state, { payload }) => {
+            
+        })
+    },
 })
 
 export const {
-    reset,
-    setUsername,
-    setPassword
+    Reset,
+    SetUsername,
+    SetPassword,
+    SetLoadingLogin
 } = slice.actions
 
-export const loginState = (state: RootState) => state.login
+export const LoginState = (state: RootState) => state.login
 export default slice.reducer

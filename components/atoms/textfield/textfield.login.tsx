@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps { className?: string }
+interface IProps {
+  className?: string,
+  inputProps?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+}
 
-const TextfieldLogin = ({ className = '' }: IProps) => {
+const TextfieldLogin: React.FC<IProps> = ({ className = '', inputProps }) => {
   return (
     <Wrapper className={className}>
       <i className='bx bx-envelope'></i>
-      <input type='text' placeholder='email' />
+      <input type='text' {...inputProps} />
     </Wrapper>
   )
 }

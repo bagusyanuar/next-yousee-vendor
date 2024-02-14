@@ -1,28 +1,33 @@
 import React, { HTMLInputTypeAttribute, useState } from 'react'
 import styled from 'styled-components'
 
-function PasswordLogin() {
-    const [type, setType] = useState<HTMLInputTypeAttribute>('password')
-    const [iconShow, setIconShow] = useState<string>('bx-show')
+interface IProps {
+  className?: string,
+  inputProps?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+}
 
-    const handleChangeType = () => {
-        if (type === 'text') {
-            setType('password')
-            setIconShow('bx-show')
-        }
+const PasswordLogin: React.FC<IProps> = ({ className = '', inputProps }) => {
+  const [type, setType] = useState<HTMLInputTypeAttribute>('password')
+  const [iconShow, setIconShow] = useState<string>('bx-show')
 
-        if (type === 'password') {
-            setType('text')
-            setIconShow('bx-low-vision')
-        }
+  const handleChangeType = () => {
+    if (type === 'text') {
+      setType('password')
+      setIconShow('bx-show')
     }
-    return (
-        <Wrapper>
-            <i className='bx bx-lock-alt prepend'></i>
-            <input type={type} placeholder='password' />
-            <i className={`bx ${iconShow} append`} onClick={handleChangeType}></i>
-        </Wrapper>
-    )
+
+    if (type === 'password') {
+      setType('text')
+      setIconShow('bx-low-vision')
+    }
+  }
+  return (
+    <Wrapper className={className}>
+      <i className='bx bx-lock-alt prepend'></i>
+      <input type={type} {...inputProps} />
+      <i className={`bx ${iconShow} append`} onClick={handleChangeType}></i>
+    </Wrapper>
+  )
 }
 
 export default PasswordLogin
