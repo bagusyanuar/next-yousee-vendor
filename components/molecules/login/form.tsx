@@ -8,8 +8,9 @@ import {
     LoginState,
     SetUsername,
     SetPassword,
-    SetLoadingLogin
+    SetLoadingLogin,
 } from '@/internal/redux/login/slice'
+import { submit } from '@/internal/redux/login/action'
 
 interface IProps { className?: string }
 
@@ -19,11 +20,7 @@ function FormLogin({ className = '' }: IProps) {
     const dispatch = useAppDispatch()
 
     const handleLogin = () => {
-        // router.push('/dashboard')
-        dispatch(SetLoadingLogin(true))
-        setTimeout(() => {
-            dispatch(SetLoadingLogin(false))
-        }, 1000);
+        dispatch(submit())
     }
 
     return (

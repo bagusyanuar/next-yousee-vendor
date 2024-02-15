@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '@/internal/redux/store'
 import { initialState } from './state'
-import { submit } from './action'
+import extraReducers from './extraReducer'
 
 const slice = createSlice({
     name: 'login',
@@ -18,14 +18,7 @@ const slice = createSlice({
             state.LoadingLogin = action.payload
         },
     },
-    extraReducers: (builder) => {
-        builder.addCase(submit.pending, (state, { payload }) => {
-            state.LoadingLogin = true
-        })
-        builder.addCase(submit.fulfilled, (state, { payload }) => {
-            
-        })
-    },
+    extraReducers,
 })
 
 export const {
