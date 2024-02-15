@@ -1,23 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps {
-    className?: string
-}
-const Text: React.FC<IProps> = ({ className }) => {
+interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> { }
+
+const Input: React.FC<IProps> = (props) => {
     return (
-        <StyledText type='text' />
+        <StyledInput
+            type='text'
+            {...props}
+        />
     )
 }
 
-export default Text
+export default Input
 
-const StyledText = styled.input`
+const StyledInput = styled.input`
     background-color: transparent;
     border: 1px solid var(--light-color);
     border-radius: 5px;
     font-size: 0.8em;
-    padding: 0.75rem 0.5rem;
+    padding: 0.75rem 0.75rem;
     color: var(--dark-color);
     width: 100%;
 

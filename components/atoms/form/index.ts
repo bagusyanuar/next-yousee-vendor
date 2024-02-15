@@ -1,5 +1,9 @@
-import InputText from './text'
+import InputText from './input'
+import InputTextIcon from './input.icon'
+import InputGroupText from './input.group'
 
 export {
-    InputText
+    InputText,
+    InputTextIcon,
+    InputGroupText
 }

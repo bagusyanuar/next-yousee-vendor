@@ -7,6 +7,8 @@
   --dark-color: #334a52;
   --light-color: #96afb8;
   --accent-color: #7d2e00;
+  --danger-color: #E40017;
+  --success-color: #004225;
 }
 
 body {
