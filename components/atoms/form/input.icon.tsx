@@ -1,23 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    parentClassName?: string,
-    prependIcon?: string,
-    appendIcon?: string
+type TIcon = {
+  position: 'prepend' | 'append'
+  icon: string
 }
-const InputIcon: React.FC<IProps> = ({ parentClassName = '', prependIcon, appendIcon, ...props }) => {
-    return (
-        <Wrapper
-            className={parentClassName}
-            $prepend={prependIcon ? true : false}
-            $append={appendIcon ? true : false}
-        >
-            {prependIcon ? <i className={`prepend-icon bx ${prependIcon}`}></i> : ''}
-            <input type='text' {...props} />
-            {prependIcon ? <i className={`append-icon bx ${appendIcon}`}></i> : ''}
-        </Wrapper>
-    )
+
+interface IProps {
+  value: string
+  icon: TIcon
+  className?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  placeholder?: string
+}
+
+const InputIcon: React.FC<IProps> = ({
+  value,
+  icon,
+  className = '',
+  onChange = (e) => { },
+  placeholder = ''
+}) => {
+  return (
+    <Wrapper
+      className={className}
+      $prepend={icon.position === 'prepend' ? true : false}
+      $append={icon.position === 'append' ? true : false}
+    >
+      {icon.position === 'prepend' ? <i className={`prepend-icon bx ${icon.icon}`}></i> : ''}
+      <input type='text' value={value} onChange={(e) => { onChange(e) }} placeholder={placeholder} />
+      {icon.position === 'append' ? <i className={`append-icon bx ${icon.icon}`}></i> : ''}
+    </Wrapper>
+  )
 }
 
 export default InputIcon
@@ -37,22 +51,22 @@ const Wrapper = styled.div<{ $prepend: boolean, $append: boolean }>`
     background-color: transparent;
     margin-left: 0.5rem;
     color: var(--dark-color);
-    display: ${({$prepend}) => $prepend ? 'inline-block' : 'none' };
+    display: ${({ $prepend }) => $prepend ? 'inline-block' : 'none'};
   }
   
   i.append-icon {
     background-color: transparent;
     margin-right: 0.5rem;
     color: var(--dark-color);
-    display: ${({$prepend}) => $prepend ? 'inline-block' : 'none' };
+    display: ${({ $append }) => $append ? 'inline-block' : 'none'};
   }
 
   input {
       font-size: 0.8em;
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
-      padding-left: ${({$prepend}) => $prepend ? '0.5rem' : '0.75rem' };
-      padding-right: ${({$append}) => $append ? '0.5rem' : '0.75rem' };
+      padding-left: ${({ $prepend }) => $prepend ? '0.5rem' : '0.75rem'};
+      padding-right: ${({ $append }) => $append ? '0.5rem' : '0.75rem'};
       border-radius: 5px;
       background-color: transparent;
       color: var(--dark-color);

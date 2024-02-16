@@ -1,13 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> { }
+interface IProps {
+    value: string
+    className?: string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    placeholder?: string
+}
 
-const Input: React.FC<IProps> = (props) => {
+const Input: React.FC<IProps> = ({
+    value,
+    className = '',
+    onChange = (e) => { },
+    placeholder = ''
+}) => {
     return (
         <StyledInput
             type='text'
-            {...props}
+            value={value}
+            onChange={(e) => onChange(e)}
+            className={className}
+            placeholder={placeholder}
         />
     )
 }

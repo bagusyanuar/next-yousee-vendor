@@ -1,27 +1,61 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+interface IProps {
+    value: string
+    className?: string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    placeholder?: string
     label?: string | React.ReactNode
-    validatorText?: string
-    validatorType?: 'error' | 'success'
+    labelClassName?: string
+    errorText?: string
+    errorClassName?: string
 }
-const InputGroup: React.FC<IProps> = ({ label, validatorText, validatorType, ...props }) => {
+
+const InputGroup: React.FC<IProps> = ({
+    value,
+    className = '',
+    onChange = (e) => { },
+    placeholder = '',
+    label = '',
+    labelClassName = '',
+    errorText = '',
+    errorClassName = ''
+}) => {
     return (
-        <div>
-            <label htmlFor={props.id ? props.id : ''}>{label}</label>
+        <Wrapper className={className}>
+            {
+                label !== ''
+                    ?
+                    <StyledLabel className={labelClassName}>{label}</StyledLabel>
+                    :
+                    <></>
+            }
             <StyledInput
                 type='text'
-                {...props}
+                value={value}
+                onChange={(e) => onChange(e)}
+                placeholder={placeholder}
             />
-            <StyledValidatorText $type={validatorType ? validatorType : 'error'}>
-                {validatorText}
-            </StyledValidatorText>
-        </div>
+            {
+                errorText !== ''
+                    ?
+                    <StyledErrorText className={errorClassName}>
+                        {errorText}
+                    </StyledErrorText>
+                    :
+                    <></>
+            }
+        </Wrapper>
     )
 }
 
 export default InputGroup
+
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`
 
 const StyledInput = styled.input`
     background-color: transparent;
@@ -39,8 +73,15 @@ const StyledInput = styled.input`
     }
 `
 
-const StyledValidatorText = styled.span < { $type: 'error' | 'success' } > `
+const StyledLabel = styled.label`
+    font-size: 0.8em;
+    color: var(--dark-color);
+    display: inline-block;
+    padding: 0 2px;
+`
+
+const StyledErrorText = styled.span`
     font-size: 0.7em;
     padding: 0 2px;
-    color: ${({ $type }) => $type === 'success' ? 'var(--success-color)' : 'var(--danger-color)'};
+    color: var(--danger-color);
 `
