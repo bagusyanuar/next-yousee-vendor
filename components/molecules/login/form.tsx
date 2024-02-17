@@ -1,7 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
-import { TextfieldLogin, PasswordfieldLogin } from '@/components/atoms/textfield'
+import {
+    InputGroupTextIcon,
+    InputGroupPasswordIcon
+} from '@/components/atoms/form'
 import { ButtonLoading } from '@/components/atoms/button'
 import { useAppDispatch, useAppSelector } from '@/internal/redux/hooks'
 import {
@@ -9,8 +12,8 @@ import {
     SetUsername,
     SetPassword,
     SetLoadingLogin,
-} from '@/internal/redux/login/slice'
-import { submit } from '@/internal/redux/login/action'
+} from '@/src/redux/login/slice'
+import { submit } from '@/src/redux/login/action'
 
 interface IProps { className?: string }
 
@@ -25,17 +28,25 @@ function FormLogin({ className = '' }: IProps) {
 
     return (
         <Wrapper className={className}>
-            <TextfieldLogin
+            <InputGroupTextIcon
+                value={StateLogin.Username}
                 className='mb-3'
-                inputProps={{
-                    placeholder: 'email',
-                    onChange: (e) => {
-                        dispatch(SetUsername(e.currentTarget.value))
-                    },
-                    value: StateLogin.Username
+                placeholder='email'
+                icon={{ icon: 'bx-envelope' }}
+                onChange={(e) => {
+                    dispatch(SetUsername(e.currentTarget.value))
                 }}
             />
-            <PasswordfieldLogin
+            <InputGroupPasswordIcon
+                value={StateLogin.Password}
+                icon='bx-lock-alt'
+                placeholder='password'
+                onChange={(e) => {
+                    dispatch(SetPassword(e.currentTarget.value))
+                }}
+                withShowPassword
+            />
+            {/* <PasswordfieldLogin
                 inputProps={{
                     placeholder: 'password',
                     onChange: (e) => {
@@ -43,7 +54,7 @@ function FormLogin({ className = '' }: IProps) {
                     },
                     value: StateLogin.Password
                 }}
-            />
+            /> */}
             <StyledForgotPassword href='#'>Forgot Password</StyledForgotPassword>
             <ButtonLoading
                 className='w-full'
@@ -60,6 +71,8 @@ export default FormLogin
 
 const Wrapper = styled.div`
     width: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 const StyledForgotPassword = styled.a`

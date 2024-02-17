@@ -5,6 +5,7 @@ import InputGroupTextIcon from './input.group.icon'
 import InputPassword from './input.password'
 import InputPasswordIcon from './input.password.icon'
 import InputGroupPassword from './input.password.group'
+import InputGroupPasswordIcon from './input.password.group.icon'
 
 export {
     InputText,
@@ -13,5 +14,6 @@ export {
     InputGroupTextIcon,
     InputPassword,
     InputPasswordIcon,
-    InputGroupPassword
+    InputGroupPassword,
+    InputGroupPasswordIcon
 }

@@ -7,7 +7,8 @@ import {
     InputGroupTextIcon,
     InputPassword,
     InputPasswordIcon,
-    InputGroupPassword
+    InputGroupPassword,
+    InputGroupPasswordIcon
 } from '@/components/atoms/form'
 
 export default function Sample() {
@@ -20,6 +21,7 @@ export default function Sample() {
             <InputPassword value='asdasd' placeholder='password' withShowPassword={true} className='mb-3' />
             <InputPasswordIcon value='asdasdasd' icon='bx-lock-alt' placeholder='password' withShowPassword={true} className='mb-3' />
             <InputGroupPassword value='asdasdasd' placeholder='password' withShowPassword={true} label='Label' className='mb-3' errorText='error text'  />
+            <InputGroupPasswordIcon value='asdasdasd' icon='bx-lock-alt' placeholder='password' withShowPassword={true} label='Label' className='mb-3' errorText='error text'  />
         </main>
     )
 }
