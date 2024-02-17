@@ -1,16 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const TaglineLogin = () => {
+interface IProps { className?: string }
+
+const LoginHeading: React.FC<IProps> = ({ className = '' }) => {
     return (
-        <Wrapper>
+        <Wrapper className={className}>
             <h1>Login To Your Account</h1>
             <p>Welcome back to Yousee Vendor App. Manage Your Advertise</p>
         </Wrapper>
     )
 }
 
-export default TaglineLogin
+export default LoginHeading
 
 const Wrapper = styled.div`
     width: 100%;
@@ -25,6 +27,5 @@ const Wrapper = styled.div`
     p {
         font-size: 0.8em;
         color: var(--light-color);
-        margin-bottom: 1rem;
     }
 `

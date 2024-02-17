@@ -3,15 +3,17 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { device } from '@/components/media'
 
-const HeroLogin = () => {
-  return (
-    <Wrapper>
-        <Image src='/assets/images/hero.jpg' height={1200} width={1200} alt='hero-image' priority />
-    </Wrapper>
-  )
+interface IProps { className?: string }
+
+const LoginHero: React.FC<IProps> = ({ className = '' }) => {
+    return (
+        <Wrapper className={className}>
+            <Image src='/assets/images/hero.jpg' height={1200} width={1200} alt='hero-image' priority />
+        </Wrapper>
+    )
 }
 
-export default HeroLogin
+export default LoginHero
 
 const Wrapper = styled.div`
     display: none;

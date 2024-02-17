@@ -1,5 +1,5 @@
-import FormLogin from './form'
+import LoginFormOrganism from './login.form'
 
 export {
-    FormLogin
+    LoginFormOrganism
 }

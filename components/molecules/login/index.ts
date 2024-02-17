@@ -1,9 +1,9 @@
-import HeroLogin from './hero'
-import FormLogin from './form'
-import TaglineLogin from './tagline'
+import LoginFormMolecule from './login.form'
+import LoginHeadingMolecule from './login.heading'
+import LoginHeroMolecule from './login.hero'
 
 export {
-    HeroLogin,
-    FormLogin,
-    TaglineLogin
+    LoginFormMolecule,
+    LoginHeadingMolecule,
+    LoginHeroMolecule
 }

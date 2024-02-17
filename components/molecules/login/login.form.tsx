@@ -6,7 +6,7 @@ import {
     InputGroupPasswordIcon
 } from '@/components/atoms/form'
 import { ButtonLoading } from '@/components/atoms/button'
-import { useAppDispatch, useAppSelector } from '@/internal/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks'
 import {
     LoginState,
     SetUsername,
@@ -16,8 +16,7 @@ import {
 import { submit } from '@/src/redux/login/action'
 
 interface IProps { className?: string }
-
-function FormLogin({ className = '' }: IProps) {
+const LoginForm: React.FC<IProps> = ({ className = '' }) => {
     const router = useRouter()
     const StateLogin = useAppSelector(LoginState)
     const dispatch = useAppDispatch()
@@ -25,9 +24,8 @@ function FormLogin({ className = '' }: IProps) {
     const handleLogin = () => {
         dispatch(submit())
     }
-
     return (
-        <Wrapper className={className}>
+        <Wrapper>
             <InputGroupTextIcon
                 value={StateLogin.Username}
                 className='mb-3'
@@ -46,16 +44,7 @@ function FormLogin({ className = '' }: IProps) {
                 }}
                 withShowPassword
             />
-            {/* <PasswordfieldLogin
-                inputProps={{
-                    placeholder: 'password',
-                    onChange: (e) => {
-                        dispatch(SetPassword(e.currentTarget.value))
-                    },
-                    value: StateLogin.Password
-                }}
-            /> */}
-            <StyledForgotPassword href='#'>Forgot Password</StyledForgotPassword>
+            <ForgotPassword href='#'>Forgot Password</ForgotPassword>
             <ButtonLoading
                 className='w-full'
                 onClick={handleLogin}
@@ -67,7 +56,7 @@ function FormLogin({ className = '' }: IProps) {
     )
 }
 
-export default FormLogin
+export default LoginForm
 
 const Wrapper = styled.div`
     width: 100%;
@@ -75,7 +64,7 @@ const Wrapper = styled.div`
     flex-direction: column;
 `
 
-const StyledForgotPassword = styled.a`
+const ForgotPassword = styled.a`
     font-size: 0.7em;
     font-weight: 600;
     color: var(--primary-color);

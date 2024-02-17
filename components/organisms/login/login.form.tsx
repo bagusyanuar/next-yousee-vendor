@@ -1,23 +1,30 @@
 import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { FormLogin as FormLayoutLogin, TaglineLogin } from '@/components/molecules/login'
+import { LoginFormMolecule, LoginHeadingMolecule } from '@/components/molecules/login'
 import { device } from '@/components/media'
 
 interface IProps { className?: string }
-const FormLogin = ({ className = '' }: IProps) => {
+const LoginForm: React.FC<IProps> = ({ className = '' }) => {
     return (
         <Wrapper className={className}>
             <FormLoginWrapper>
-                <Image src='/assets/images/brand.png' alt='brand-image' height={200} width={200} priority />
-                <TaglineLogin />
-                <FormLayoutLogin />
+                <Image
+                    src='/assets/images/brand.png'
+                    className='login-brand'
+                    alt='brand-image'
+                    height={400}
+                    width={400}
+                    priority
+                />
+                <LoginHeadingMolecule className='login-heading' />
+                <LoginFormMolecule />
             </FormLoginWrapper>
         </Wrapper>
     )
 }
 
-export default FormLogin
+export default LoginForm
 
 const Wrapper = styled.div`
     height: 100vh;
@@ -40,7 +47,12 @@ const FormLoginWrapper = styled.div`
     align-items: center;
     padding: 0 5rem;
 
-    img {
+    .login-brand {
+        margin-bottom: 1rem;
+        width: 200px;
+    }
+
+    .login-heading {
         margin-bottom: 1rem;
     }
 

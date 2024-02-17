@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { HeroLogin } from '@/components/molecules/login'
-import { FormLogin } from '@/components/organisms/login'
+import { LoginHeroMolecule } from '@/components/molecules/login'
+import { LoginFormOrganism } from '@/components/organisms/login'
 import { device } from '@/components/media'
 
 function LoginTemplate() {
     return (
         <Wrapper>
-            <HeroLogin />
-            <FormLogin />
+            <LoginHeroMolecule />
+            <LoginFormOrganism />
         </Wrapper>
     )
 }

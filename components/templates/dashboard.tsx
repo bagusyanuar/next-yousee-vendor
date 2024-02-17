@@ -1,15 +1,13 @@
 import React from 'react'
-import { SidebarMenu } from '@/components/molecules/sidebar'
-import Sidebar, { SidebarBrand, SidebarItem } from '@/components/atoms/sidebar'
+// import { SidebarMenu } from '@/components/molecules/sidebar'
+// import Sidebar, { SidebarBrand, SidebarItem } from '@/components/atoms/sidebar'
+import { Layout } from '@/components/organisms/layout'
 
 function DashboardTemplate() {
     return (
-        <main>
-            <Sidebar>
-                <SidebarBrand image='/assets/images/brand.png' className='mb-10' />
-                <SidebarMenu />
-            </Sidebar>
-        </main>
+        <Layout>
+            
+        </Layout>
     )
 }
 
