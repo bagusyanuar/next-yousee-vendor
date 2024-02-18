@@ -1,5 +1,5 @@
-import SidebarMenu from './sidebar.menu'
+import SidebarMenuMolecules from './sidebar.menu'
 
 export {
-    SidebarMenu
+    SidebarMenuMolecules
 }

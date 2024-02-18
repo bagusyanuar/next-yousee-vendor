@@ -1,12 +1,18 @@
 import React from 'react'
+import { usePathname } from 'next/navigation'
 import styled from 'styled-components'
 import { SidebarItem } from '@/components/atoms/sidebar'
 
-const SidebarMenu = () => {
+interface IProps { className?: string }
+
+const SidebarMenu: React.FC<IProps> = ({ className = '' }) => {
+    const pathName = usePathname()
+    console.log(pathName);
+
     return (
-        <Wrapper>
-            <SidebarItem text='Dashboard' icon='bxs-dashboard' />
-            <SidebarItem text='Item' icon='bx-desktop' />
+        <Wrapper className={className}>
+            <SidebarItem to='/' text='Dashboard' icon='bxs-dashboard' className={pathName === '/dashboard' ? 'active' : ''} />
+            <SidebarItem to='/' text='Titik Iklan' icon='bx-desktop' className={pathName === '/item' ? 'active' : ''} />
         </Wrapper>
     )
 }
@@ -17,5 +23,5 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 0.25;
+    gap: 0.25rem;
 `

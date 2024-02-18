@@ -5,7 +5,7 @@ import { Layout } from '@/components/organisms/layout'
 
 function DashboardTemplate() {
     return (
-        <Layout>
+        <Layout title='Dashboard' subTitle='welcome to yousee vendor dashboard'>
             
         </Layout>
     )
