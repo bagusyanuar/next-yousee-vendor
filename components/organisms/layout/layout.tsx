@@ -20,6 +20,9 @@ const Layout: React.FC<IProps> = ({
             <SidebarOrganism />
             <ContentWrapper>
                 <NavbarOrganism title={title} subTitle={subTitle} withBackButton={withBackButton} />
+                <Content>
+                    {children}
+                </Content>
             </ContentWrapper>
         </Wrapper>
     )
@@ -38,7 +41,13 @@ const ContentWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-left: 270px;
+    padding-left: 260px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+`
+
+const Content = styled.div`
+    padding-right: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 `

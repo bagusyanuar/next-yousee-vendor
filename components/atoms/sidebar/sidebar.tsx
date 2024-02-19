@@ -17,11 +17,11 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 1rem 1.25rem;
-    width: 270px;
+    width: 260px;
     height: calc(100vh - 2rem);
     position: fixed;
     background-color: white;
     border-radius: 10px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 `

@@ -71,7 +71,7 @@ const Wrapper = styled.div`
     justify-content: center;
     border-radius: 50%;
     position: relative;
-
+    
     img {
         height: 45px;
         width: 45px;
@@ -95,6 +95,7 @@ const DropdownWrapper = styled.div`
     transition: opacity 200ms ease-in-out, top 200ms ease-in-out, visibility 200ms linear;
     padding: 0.75rem 0.75rem;
     visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     &.open {
         visibility: visible;
