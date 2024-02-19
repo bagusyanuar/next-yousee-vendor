@@ -7,12 +7,14 @@ type TTheme = 'red' | 'orange' | 'green' | 'main'
 interface IProps {
     title: string
     subTitle: string
+    icon: string
     className?: string
     theme?: TTheme
 }
 const DashboardCardInformation: React.FC<IProps> = ({
     title = '',
     subTitle = '',
+    icon,
     theme = 'main',
     className = ''
 }) => {
@@ -23,7 +25,7 @@ const DashboardCardInformation: React.FC<IProps> = ({
                 <h1>{subTitle}</h1>
             </InformationWrapper>
             <IconWrapper $theme={theme}>
-                <i className='bx bx-desktop'></i>
+                <i className={`bx ${icon}`}></i>
             </IconWrapper>
         </Wrapper>
     )
@@ -66,8 +68,8 @@ const InformationWrapper = styled.div`
 
     h5 {
         font-size: 0.8em;
-        color: var(--light-color);
-        margin-bottom: 0;
+        color: color-mix(in srgb, var(--dark-color) 70%, white);
+        margin-bottom: 0.5rem;
     }
 
     h1 {
@@ -80,8 +82,8 @@ const InformationWrapper = styled.div`
 
 const IconWrapper = styled.div<{ $theme: TTheme }>`
     border-radius: 50%;
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,7 +92,7 @@ const IconWrapper = styled.div<{ $theme: TTheme }>`
 
     i {
         color: white;
-        font-size: 1.25em;
+        font-size: 1.5em;
     }
 `
 
