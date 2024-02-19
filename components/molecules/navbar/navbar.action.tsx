@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { LinkProfile } from '@/components/atoms/link'
+import { ButtonNavbarProfile, ButtonNavbarNotification } from '@/components/atoms/button'
 
 interface IProps { image: string, className?: string }
 const NavbarAction: React.FC<IProps> = ({ image, className = '' }) => {
     return (
         <Wrapper className={className}>
-            <LinkProfile />
+            <ButtonNavbarNotification className='me-5' />
+            <ButtonNavbarProfile />
         </Wrapper>
     )
 }
