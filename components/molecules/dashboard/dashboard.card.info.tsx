@@ -1,6 +1,9 @@
 import React from 'react'
 import { Card } from '@/components/atoms/card'
+import { Divider } from '@/components/atoms/divider'
+import { LinkIcon } from '@/components/atoms/link'
 import styled from 'styled-components'
+import { CardRadius } from '@/components/util'
 
 type TTheme = 'red' | 'orange' | 'green' | 'main'
 
@@ -19,14 +22,20 @@ const DashboardCardInformation: React.FC<IProps> = ({
     className = ''
 }) => {
     return (
-        <Wrapper className={className} >
-            <InformationWrapper>
-                <h5>{title}</h5>
-                <h1>{subTitle}</h1>
-            </InformationWrapper>
-            <IconWrapper $theme={theme}>
-                <i className={`bx ${icon}`}></i>
-            </IconWrapper>
+        <Wrapper className={className}>
+            <CardBody>
+                <InformationWrapper>
+                    <h5>{title}</h5>
+                    <h1>{subTitle}</h1>
+                </InformationWrapper>
+                <IconWrapper $theme={theme}>
+                    <i className={`bx ${icon}`}></i>
+                </IconWrapper>
+            </CardBody>
+            <Divider />
+            <CardFooter>
+                <LinkIcon icon='bx-right-arrow-alt' to='#' />
+            </CardFooter>
         </Wrapper>
     )
 }
@@ -57,8 +66,23 @@ const themeBase = ({ $theme }: { $theme: TTheme }) => {
 const Wrapper = styled(Card)`
     cursor: pointer;
     width: 100%;
+`
+
+const CardBody = styled.div`
+    width: 100%;
+    padding: 1.5rem 1.5rem;
     display: flex;
     align-items: center;
+`
+
+const CardFooter = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom-right-radius: ${CardRadius.medium};
+    border-bottom-left-radius: ${CardRadius.medium};
 `
 
 const InformationWrapper = styled.div`
